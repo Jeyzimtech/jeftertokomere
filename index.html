@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jefter Isheanesu Tokomere | Software Engineer &amp; IoT Developer</title>
+  <meta name="description"
+    content="Portfolio of Jefter Isheanesu Tokomere – Software Engineer, Full Stack Developer, and IoT Innovator from Zimbabwe. Specializing in web apps, mobile apps, and ESP32 IoT systems." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Particle Background -->
+  <canvas id="particles-canvas"></canvas>
+  <!-- Language Rain Background -->
+  <canvas id="lang-rain-canvas"></canvas>
+  <!-- Letter Glitch Background -->
+  <canvas id="letter-glitch-canvas"></canvas>
+
+  <!-- ── NAVBAR ─────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">&lt;JeyZimTech /&gt;</a>
+        <ul class="nav-links">
+          <li><a href="#summary">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="mailto:jeyzimtech@gmail.com" class="nav-hire">
+          <i class="fas fa-paper-plane"></i> Attach Me
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-close" id="mobile-close"><i class="fas fa-times"></i></button>
+    <a href="#summary">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#tools">Tools</a>
+    <a href="#contact">Contact</a>
+    <a href="mailto:jeyzimtech@gmail.com" class="btn btn-primary">Hire / Attach Me</a>
+  </div>
+
+  <!-- ── HERO ───────────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Text Content -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span></span> Student seeking Industrial Attachment
+          </div>
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Jefter</span><br>
+            Isheanesu Tokomere
+          </h1>
+          <div class="hero-role">
+            <span id="typed"></span>
+          </div>
+          <p class="hero-desc">
+            A passionate Software Engineer and IoT Developer from Zimbabwe currently
+            studying at the <strong>National University of Science and Technology (NUST)</strong>.
+            I build scalable web apps, mobile apps, and intelligent IoT systems that
+            combine software and hardware to solve real-world problems.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fas fa-rocket"></i> View My Work
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fas fa-envelope"></i> Get In Touch
+            </a>
+            <a href="Jefter TOKOMERE CV.pdf" class="btn btn-outline" target="_blank" rel="noopener" download>
+              <i class="fas fa-download"></i> Download CV
+            </a>
+          </div>
+          <div class="hero-socials">
+            <a href="https://github.com/Jeyzimtech" target="_blank" class="social-link" title="GitHub"><i
+                class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jefter-tokomere-1668412ba?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-link" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:jeyzimtech@gmail.com" class="social-link" title="Email"><i
+                class="fas fa-envelope"></i></a>
+            <a href="https://twitter.com/" target="_blank" class="social-link" title="Twitter"><i
+                class="fab fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <!-- Avatar -->
+        <div class="hero-visual">
+          <div class="avatar-wrapper">
+            <div class="avatar-ring-outer"></div>
+            <div class="avatar-ring-inner"></div>
+            <img src="profile.jpg" alt="Jefter Isheanesu Tokomere" class="avatar-img" />
+            <div class="avatar-badge">🇿🇼 Harare, Zimbabwe</div>
+            <div class="avatar-stat avatar-stat-1">
+              <span class="num">11+</span>
+              <span class="lbl">Projects</span>
+            </div>
+            <div class="avatar-stat avatar-stat-2">
+              <span class="num">🎓</span>
+              <span class="lbl">NUST Student</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ── PROFESSIONAL SUMMARY ───────────────────── -->
+  <section id="summary" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">Professional Summary</h2>
+      <p class="section-subtitle reveal">Who I am &amp; what drives me</p>
+      <div class="section-divider reveal"><span></span></div>
+
+      <div class="summary-card reveal">
+        <p class="summary-text">
+          Jefter Isheanesu Tokomere is a multidisciplinary
+          <strong>Software Engineer, Full Stack Developer, and IoT Developer</strong>
+          with experience building web applications, mobile applications, and embedded IoT systems.
+          <br><br>
+          He has successfully developed several innovative solutions including
+          <strong>livestock monitoring systems, developer tools, AI-powered platforms,
+            e-learning platforms, and business websites</strong>. Jefter specializes in integrating
+          <strong>hardware technologies like ESP32 with cloud and mobile applications</strong>
+          to build smart automation systems.
+          <br><br>
+          His technical expertise spans <strong>modern web technologies, mobile development,
+            backend systems, IoT architecture, DevOps tools, and AI development</strong>.
+          He is passionate about building solutions that empower
+          <strong>developers, farmers, entrepreneurs, and students through technology</strong>.
+        </p>
+
+        <div class="summary-highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon"></div>
+            <span class="highlight-num" data-count="11">0</span>
+            <span class="highlight-lbl">Projects Shipped</span>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">💻</div>
+            <span class="highlight-num" data-count="6">0</span>
+            <span class="highlight-lbl">Languages</span>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">📡</div>
+            <span class="highlight-num" data-count="3">0</span>
+            <span class="highlight-lbl">IoT Systems</span>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🔍</div>
+            <span class="highlight-num" style="font-size:1.1rem;">Open</span>
+            <span class="highlight-lbl">For Attachment</span>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">📚</div>
+            <span class="highlight-num" style="font-size:1.1rem;">NUST</span>
+            <span class="highlight-lbl">Studying Now</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ─────────────────────────────────── -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">Technical Skills</h2>
+      <p class="section-subtitle reveal">Technologies I work with across the full stack</p>
+      <div class="section-divider reveal"><span>🛠</span></div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">💬</div>
+            <span class="skill-card-title">Programming Languages</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">Java</span>
+            <span class="skill-pill">C / C++</span>
+            <span class="skill-pill">C#</span>
+            <span class="skill-pill">PHP</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">🌐</div>
+            <span class="skill-card-title">Web Development</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">HTML &amp; CSS</span>
+            <span class="skill-pill">CSS3</span>
+            <span class="skill-pill">React</span>
+            <span class="skill-pill">Next.js</span>
+            <span class="skill-pill">Three.js</span>
+            <span class="skill-pill">Django</span>
+            <span class="skill-pill">WordPress</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">📱</div>
+            <span class="skill-card-title">Mobile Development</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">Flutter</span>
+            <span class="skill-pill">Dart</span>
+            <span class="skill-pill">Cross-platform</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">📡</div>
+            <span class="skill-card-title">IoT Development</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">ESP32</span>
+            <span class="skill-pill">Arduino</span>
+            <span class="skill-pill">Hardware Integration</span>
+            <span class="skill-pill">Embedded Systems</span>
+            <span class="skill-pill">Sensors</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">🗄</div>
+            <span class="skill-card-title">Databases</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">Firebase</span>
+            <span class="skill-pill">SQL</span>
+            <span class="skill-pill">NoSQL</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">⚙️</div>
+            <span class="skill-card-title">DevOps &amp; Tools</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">Git</span>
+            <span class="skill-pill">GitHub</span>
+            <span class="skill-pill">Jenkins</span>
+            <span class="skill-pill">VS Code</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">🖥</div>
+            <span class="skill-card-title">System Skills</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">Linux Commands</span>
+            <span class="skill-pill">cPanel</span>
+            <span class="skill-pill">DirectAdmin</span>
+            <span class="skill-pill">Networking</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">🧠</div>
+            <span class="skill-card-title">CS Knowledge</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">Algorithms &amp; DS</span>
+            <span class="skill-pill">Artificial Intelligence</span>
+            <span class="skill-pill">Database Systems</span>
+            <span class="skill-pill">Networking</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon">🔧</div>
+            <span class="skill-card-title">Hardware</span>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">Computer Hardware</span>
+            <span class="skill-pill">Certified Technician</span>
+            <span class="skill-pill">Circuit Basics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ────────────────────────────────── -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">Featured Projects</h2>
+      <p class="section-subtitle reveal">A showcase of what I've built — from IoT systems to web platforms</p>
+      <div class="section-divider reveal"><span></span></div>
+
+      <div class="projects-grid">
+
+        <div class="project-card project-iot">
+          <div class="project-number">01 — IoT System</div>
+          <div class="project-title">Smart Tag – IoT Livestock Monitor</div>
+          <p class="project-desc">An IoT-based livestock monitoring solution using ESP32 hardware modules and a Flutter
+            mobile application to track and monitor cattle health and location in real time.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">ESP32</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">Firebase</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-number">02 — Mobile App</div>
+          <div class="project-title">Campus Cart</div>
+          <p class="project-desc">A mobile marketplace application designed for university students to buy and sell
+            products within campus communities, with real-time listings and secure messaging.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Dart</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-number">03 — AI Tool</div>
+          <div class="project-title">Muumbi AI VSCode Extension</div>
+          <p class="project-desc">A developer productivity tool that helps programmers write, debug, and generate
+            machine learning code inside Visual Studio Code with AI-powered suggestions.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">VSCode API</span>
+              <span class="tag">AI/ML</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-number">04 — Web Platform</div>
+          <div class="project-title">Swinyo E-Learning Platform</div>
+          <p class="project-desc">A web-based learning management platform for online education, featuring course
+            management, student dashboards, quizzes, and progress tracking.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">Django</span>
+              <span class="tag">Python</span>
+              <span class="tag">MySQL</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-number">05 — Web Platform</div>
+          <div class="project-title">JeyZimTech Academy</div>
+          <p class="project-desc">An online education platform focused on technology learning and digital skills
+            development, offering coding courses and tech tutorials for African learners.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">React</span>
+              <span class="tag">Firebase</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+        <div class="project-card project-iot">
+          <div class="project-number">06 — IoT System</div>
+          <div class="project-title">Collerbell Livestock Monitoring</div>
+          <p class="project-desc">A livestock monitoring platform integrated with ESP32 IoT sensors to track cattle
+            activity, health data, and location in real time via a web dashboard.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">ESP32</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+        <div class="project-card project-iot">
+          <div class="project-number">07 — IoT System</div>
+          <div class="project-title">Smart Hanger System</div>
+          <p class="project-desc">An innovative IoT security solution that helps secure purchased goods after checkout
+            at retail stores, preventing unauthorized removal using RFID and ESP32.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">ESP32</span>
+              <span class="tag">RFID</span>
+              <span class="tag">C++</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-number">08 — Web Platform</div>
+          <div class="project-title">Kudzidza Mari Platform</div>
+          <p class="project-desc">A digital platform designed for farmers, entrepreneurs, and students to access
+            business and financial knowledge resources in Zimbabwe, with localized Shona content.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">PWA</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-number">09 — Company Website</div>
+          <div class="project-title">Teramark Technologies Website</div>
+          <p class="project-desc">Developed a professional company website for Teramark Technologies, showcasing
+            services such as software development, mobile development, and AI automation.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">WordPress</span>
+              <span class="tag">PHP</span>
+              <span class="tag">cPanel</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-number">10 — Website</div>
+          <div class="project-title">Wedding Gallery Website</div>
+          <p class="project-desc">A custom website for storing and sharing wedding memories and media collections,
+            featuring an elegant gallery, guest book, and RSVP system.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">PHP</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-number">11 — Corporate Website</div>
+          <div class="project-title">True Start Construction Website</div>
+          <p class="project-desc">A corporate website built for a small construction company to present services,
+            showcase completed projects, and enable client inquiries with a modern UI.</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tag">WordPress</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">PHP</span>
+            </div>
+            <div class="project-link"><i class="fas fa-arrow-up-right-from-square"></i></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ─────────────────────────────── -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">Experience Areas</h2>
+      <p class="section-subtitle reveal">Domains where I deliver real-world solutions</p>
+      <div class="section-divider reveal"><span></span></div>
+
+      <div class="experience-grid">
+        <div class="exp-card">
+          <div class="exp-icon">🌐</div>
+          <div class="exp-title">Full Stack Development</div>
+          <div class="exp-subtitle">React · Next.js · Django · Node.js</div>
+          <p class="exp-desc">Building end-to-end web applications from RESTful APIs and databases to interactive
+            frontends — with a focus on performance, scalability, and clean architecture.</p>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon">📡</div>
+          <div class="exp-title">IoT System Development</div>
+          <div class="exp-subtitle">ESP32 · Arduino · MQTT · Sensors</div>
+          <p class="exp-desc">Designing and deploying embedded IoT systems that connect physical hardware to cloud
+            applications — including real-time livestock monitoring and smart security systems.</p>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon">📱</div>
+          <div class="exp-title">Mobile App Development</div>
+          <div class="exp-subtitle">Flutter · Dart · Firebase</div>
+          <p class="exp-desc">Crafting cross-platform mobile applications for Android and iOS that deliver smooth UX,
+            real-time data sync, and seamless backend integration.</p>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon">🤖</div>
+          <div class="exp-title">AI Developer Tools</div>
+          <div class="exp-subtitle">VSCode API · LLMs · Python</div>
+          <p class="exp-desc">Developing AI-powered developer productivity tools and extensions that integrate large
+            language models into the coding workflow to accelerate development.</p>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon">📚</div>
+          <div class="exp-title">Web Platform Development</div>
+          <div class="exp-subtitle">E-Commerce · E-Learning · CMS</div>
+          <p class="exp-desc">Building feature-rich platforms including e-learning systems, marketplace apps, and
+            corporate sites — with user management, payments, and dashboards.</p>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-icon">🐳</div>
+          <div class="exp-title">DevOps Integration</div>
+          <div class="exp-subtitle">Docker · GitHub · Jenkins · Linux</div>
+          <p class="exp-desc">Setting up CI/CD pipelines, containerized deployments with Docker, server configuration,
+            and automated testing workflows for reliable software delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TOOLS & TECHNOLOGIES ───────────────────── -->
+  <section id="tools" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">Tools &amp; Technologies</h2>
+      <p class="section-subtitle reveal">The ecosystem I build with every day</p>
+      <div class="section-divider reveal"><span></span></div>
+
+      <div class="tools-grid reveal">
+        <div class="tool-item">
+          <span class="tool-icon">🐳</span>
+          <div class="tool-name">Docker</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🌿</span>
+          <div class="tool-name">Git</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🐙</span>
+          <div class="tool-name">GitHub</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">💻</span>
+          <div class="tool-name">VS Code</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🔧</span>
+          <div class="tool-name">Jenkins</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🐧</span>
+          <div class="tool-name">Linux</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🔥</span>
+          <div class="tool-name">Firebase</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">📱</span>
+          <div class="tool-name">Flutter</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">⚛️</span>
+          <div class="tool-name">React</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">▲</span>
+          <div class="tool-name">Next.js</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🎛</span>
+          <div class="tool-name">Arduino</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">📡</span>
+          <div class="tool-name">ESP32</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🐍</span>
+          <div class="tool-name">Python</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🌐</span>
+          <div class="tool-name">Django</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🗄</span>
+          <div class="tool-name">MySQL</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🎯</span>
+          <div class="tool-name">WordPress</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🎨</span>
+          <div class="tool-name">CSS3</div>
+        </div>
+        <div class="tool-item">
+          <span class="tool-icon">🔺</span>
+          <div class="tool-name">Three.js</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CERTIFICATES ────────────────────────────── -->
+  <section id="certificates" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">Certificates &amp; Memberships</h2>
+      <p class="section-subtitle reveal">Professional learning milestones in cybersecurity, software, and emerging tech</p>
+      <div class="section-divider reveal"><span>🏆</span></div>
+
+      <div class="certificates-grid">
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">Cisco</span>
+            <span class="cert-type">Certificate</span>
+          </div>
+          <h3 class="cert-title">Ethical Hacking</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">Cisco</span>
+            <span class="cert-type">Certificate</span>
+          </div>
+          <h3 class="cert-title">English for IT 1</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">Cisco</span>
+            <span class="cert-type">Certificate</span>
+          </div>
+          <h3 class="cert-title">Cyber Threat Management</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">Cisco</span>
+            <span class="cert-type">Certificate</span>
+          </div>
+          <h3 class="cert-title">Introduction to Cybersecurity</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">ISACA</span>
+            <span class="cert-type">Membership</span>
+          </div>
+          <h3 class="cert-title">Information Systems Audit and Control Association Membership</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">Computer Society of Zimbabwe</span>
+            <span class="cert-type">Membership</span>
+          </div>
+          <h3 class="cert-title">Professional Member</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">Android</span>
+            <span class="cert-type">Certificate</span>
+          </div>
+          <h3 class="cert-title">Android Developer Fundamentals</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">Udemy</span>
+            <span class="cert-type">Course</span>
+          </div>
+          <h3 class="cert-title">Mobile Application Development</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">Oracle University</span>
+            <span class="cert-type">Certification</span>
+          </div>
+          <h3 class="cert-title">Oracle Certified Foundations Associate</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">Udemy</span>
+            <span class="cert-type">Course</span>
+          </div>
+          <h3 class="cert-title">Git, GitHub and GitLab</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">ISACA</span>
+            <span class="cert-type">Certification</span>
+          </div>
+          <h3 class="cert-title">IoT Certificate</h3>
+        </article>
+
+        <article class="cert-card">
+          <div class="cert-top">
+            <span class="cert-issuer">ISACA</span>
+            <span class="cert-type">Certification</span>
+          </div>
+          <h3 class="cert-title">Blockchain Certification</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ────────────────────────────────── -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">Get In Touch</h2>
+      <p class="section-subtitle reveal">Looking for an Industrial Attachment opportunity? Let's connect!</p>
+      <div class="section-divider reveal"><span></span></div>
+
+      <div class="contact-grid">
+        <!-- Left: Info -->
+        <div class="reveal-left">
+          <h3>Let's Connect</h3>
+          <p>
+            I'm a passionate Computer Science student at NUST actively seeking an
+            <strong>Industrial Attachment</strong> opportunity. I bring hands-on experience
+            in full-stack development, IoT systems, mobile apps, and AI tools.
+            If you're looking for a dedicated intern — I'd love to hear from you!
+          </p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-user"></i></div>
+            <div class="contact-detail-text">
+              <div class="label">Full Name</div>
+              <div class="value">Jefter Isheanesu Tokomere</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-location-dot"></i></div>
+            <div class="contact-detail-text">
+              <div class="label">Location</div>
+              <div class="value">Budiriro 5B, CABS Area, Harare, Zimbabwe 🇿🇼</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="contact-detail-text">
+              <div class="label">University</div>
+              <div class="value">National University of Science &amp; Technology (NUST)</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-detail-text">
+              <div class="label">Email</div>
+              <div class="value">jeyzimtech@gmail.com</div>
+            </div>
+          </div>
+
+          <div class="contact-socials">
+            <a href="https://github.com/Jeyzimtech" target="_blank" class="contact-social-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/jefter-tokomere-1668412ba?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="contact-social-btn">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="mailto:jeyzimtech@gmail.com" class="contact-social-btn">
+              <i class="fas fa-envelope"></i> Email
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal-right">
+          <div class="contact-form">
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g. Tendai Moyo" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="hello@example.com" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Industrial Attachment Enquiry…" />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell me about the attachment opportunity or project…"
+                  required></textarea>
+              </div>
+              <button type="submit" class="form-submit">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+            <div class="form-success" id="form-success">
+              <i class="fas fa-circle-check"
+                style="font-size:3rem;color:var(--accent-cyan);margin-bottom:1rem;display:block;"></i>
+              <strong>Message Sent!</strong><br>
+              <span style="color:var(--text-secondary);font-size:0.9rem;">Thanks for reaching out — I'll get back to you
+                soon.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">&lt;JeyZimTech /&gt;</div>
+        <ul class="footer-links">
+          <li><a href="#summary">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <p class="footer-copy">
+          © 2025 Jefter Isheanesu Tokomere.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll To Top -->
+  <button id="scroll-top" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
