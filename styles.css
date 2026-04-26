@@ -910,7 +910,7 @@ body {
   position:relative;
   max-width: 550px;
   margin-left: auto;
-  height: 490px; /* Further reduced to fully clip the badge */
+  height: 580px; /* Increased to show submit button */
   box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
   transition: all 0.4s ease;
   backdrop-filter: blur(12px);
@@ -921,7 +921,7 @@ body {
 }
 .contact-form iframe {
   width: 100% !important;
-  height: 600px !important; /* Taller than container to hide badge */
+  height: 650px !important; /* Taller iframe */
   border: none !important;
   display: block;
 }
@@ -934,7 +934,7 @@ body {
   background: linear-gradient(90deg, #00c853, #00ff41);
   color: #000;
   text-align: center;
-  height: 90px; /* Very tall to cover a large area */
+  height: 50px; /* Reduced to show button but still mask bottom */
   display: flex;
   align-items: center;
   justify-content: center;
