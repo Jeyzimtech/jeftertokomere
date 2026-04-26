@@ -3,15 +3,22 @@
 // Powered by Three.js + Vanilla JS
 // =============================================
 
+const isMobile = window.innerWidth <= 768;
+const canvasStates = {};
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    canvasStates[entry.target.id] = entry.isIntersecting;
+  });
+}, { threshold: 0.01 });
+
 /* ── CUSTOM TECH BACKGROUND ───────────────── */
 (function () {
   const canvas = document.getElementById('particles-canvas');
   if (!canvas) return;
+  observer.observe(canvas);
 
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
-
-  window.__customTechBgActive = true;
 
   const state = {
     w: 0,
@@ -259,31 +266,33 @@
   }
 
   function frame() {
+    requestAnimationFrame(frame);
+    if (!canvasStates[canvas.id] || document.hidden) return;
+    
     state.t += 0.016;
     state.frame++;
     ctx.clearRect(0, 0, state.w, state.h);
 
     updateNodes();
-    if (state.frame % 120 === 0) rebuildEdges();
-    if (Math.random() < 0.22) spawnPulse();
+    if (state.frame % (isMobile ? 240 : 120) === 0) rebuildEdges();
+    if (Math.random() < (isMobile ? 0.1 : 0.22)) spawnPulse();
 
     drawBackdrop();
     drawEdges();
     updateAndDrawPulses();
     drawNodes();
     drawVignette();
-
-    requestAnimationFrame(frame);
   }
 
   resize();
+  observer.observe(canvas);
   window.addEventListener('resize', resize);
   frame();
 })();
 
 /* ── LETTER GLITCH (ported from React) ───── */
 (function () {
-  if (window.__customTechBgActive) return;
+  // if (window.__customTechBgActive) return;
   const canvas = document.getElementById('letter-glitch-canvas');
   if (!canvas) return;
 
@@ -392,17 +401,20 @@
 
   // ── Loop ──────────────────────────────────────
   function animate() {
+    requestAnimationFrame(animate);
+    if (!canvasStates[canvas.id] || document.hidden) return;
+
     const now = Date.now();
-    if (now - lastGlitchTime >= glitchSpeed) {
+    if (now - lastGlitchTime >= (isMobile ? 80 : glitchSpeed)) {
       updateLetters();
       drawLetters();
       lastGlitchTime = now;
     }
     if (smooth) handleSmooth();
-    animId = requestAnimationFrame(animate);
   }
 
   resizeCanvas();
+  observer.observe(canvas);
   animate();
 
   let resizeTimer;
@@ -415,7 +427,7 @@
 
 
 (function () {
-  if (window.__customTechBgActive) return;
+  // if (window.__customTechBgActive) return;
   const canvas = document.getElementById('lang-rain-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -549,6 +561,9 @@ function startParticlesFallback(canvas) {
   }
 
   function tick() {
+    requestAnimationFrame(tick);
+    if (!canvasStates[canvas.id] || document.hidden) return;
+
     ctx.clearRect(0, 0, w, h);
 
     // Draw particles
@@ -583,17 +598,16 @@ function startParticlesFallback(canvas) {
         }
       }
     }
-
-    requestAnimationFrame(tick);
   }
 
   resize();
+  observer.observe(canvas);
   window.addEventListener('resize', resize);
   tick();
 }
 
 (function () {
-  if (window.__customTechBgActive) return;
+  // if (window.__customTechBgActive) return;
   const canvas = document.getElementById('particles-canvas');
   if (!canvas) return;
 
@@ -741,6 +755,8 @@ function startParticlesFallback(canvas) {
   let t = 0;
   function animate() {
     requestAnimationFrame(animate);
+    if (!canvasStates[renderer.domElement.id] || document.hidden) return;
+
     t += 0.012;
 
     // Smooth camera mouse parallax
@@ -781,20 +797,14 @@ function startParticlesFallback(canvas) {
 
     renderer.render(scene, camera);
   }
+  renderer.domElement.id = 'three-canvas';
+  observer.observe(renderer.domElement);
   animate();
 })();
 
 /* ── NAVBAR SCROLL ──────────────────────── */
 const navbar = document.getElementById('navbar');
 const scrollTopBtn = document.getElementById('scroll-top');
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 60) navbar.classList.add('scrolled');
-  else navbar.classList.remove('scrolled');
-
-  if (window.scrollY > 400) scrollTopBtn.classList.add('visible');
-  else scrollTopBtn.classList.remove('visible');
-});
 
 scrollTopBtn && scrollTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -803,12 +813,17 @@ scrollTopBtn && scrollTopBtn.addEventListener('click', () => {
 /* ── MOBILE MENU ────────────────────────── */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
-const mobileClose = document.getElementById('mobile-close');
 
-hamburger && hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-mobileClose && mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+hamburger && hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+});
+
 mobileMenu && mobileMenu.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  });
 });
 
 /* ── TYPED TEXT ─────────────────────────── */
@@ -875,39 +890,234 @@ document.querySelectorAll('.highlight-item').forEach(el => {
 });
 
 /* ── CONTACT FORM ───────────────────────── */
-const form = document.getElementById('contact-form');
-form && form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const btn = form.querySelector('.form-submit');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-  setTimeout(() => {
-    form.style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
-  }, 1500);
-});
+// Handled by Visme embed
 
-/* ── ACTIVE NAV LINK ────────────────────── */
+/* ── ACTIVE NAV LINK & SCROLL PROGRESS ───── */
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
+const sideDots = document.querySelectorAll('.side-dot');
+const scrollFill = document.getElementById('scroll-fill');
 
 window.addEventListener('scroll', () => {
+  // Update progress bar
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  if (scrollFill) scrollFill.style.height = scrolled + "%";
+
+  // Update active links and dots
   let current = '';
   sections.forEach(sec => {
-    const top = sec.offsetTop - 120;
+    const top = sec.offsetTop - 150;
     if (window.scrollY >= top) current = sec.getAttribute('id');
   });
-  navLinks.forEach(a => {
-    a.style.color = '';
-    if (a.getAttribute('href') === '#' + current) {
-      a.style.color = 'var(--accent-cyan)';
-    }
-  });
-});
 
-/* ── STAGGERED REVEAL ───────────────────── */
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+
+  sideDots.forEach(dot => {
+    dot.classList.remove('active');
+    if (dot.getAttribute('href') === '#' + current) dot.classList.add('active');
+  });
+
+  // Navbar scrolled state
+  if (window.scrollY > 60) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+
+  // Scroll to top button visibility
+  if (window.scrollY > 400) scrollTopBtn.classList.add('visible');
+  else scrollTopBtn.classList.remove('visible');
+}, { passive: true });
+
+/* ── STAGGERED REVEAL ──────────────────── */
 document.querySelectorAll('.skills-grid .skill-card, .projects-grid .project-card, .tools-grid .tool-item, .experience-grid .exp-card, .certificates-grid .cert-card').forEach((el, i) => {
   el.style.transitionDelay = (i * 0.05) + 's';
   el.classList.add('reveal');
   io.observe(el);
 });
+
+/* ── CIRCUIT BOARD EFFECT ──────────────── */
+(function() {
+  const canvas = document.getElementById('circuit-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h;
+  let traces = [];
+
+  class Trace {
+    constructor() {
+      this.init();
+    }
+    init() {
+      this.x = Math.random() * w;
+      this.y = Math.random() * h;
+      this.len = 0;
+      this.maxLen = Math.random() * 150 + 50;
+      this.speed = Math.random() * 2 + 1;
+      this.angle = (Math.floor(Math.random() * 4) * Math.PI) / 2; // Right angles
+      this.life = Math.random() * 0.5 + 0.5;
+      this.history = [{x: this.x, y: this.y}];
+    }
+    update() {
+      this.x += Math.cos(this.angle) * this.speed;
+      this.y += Math.sin(this.angle) * this.speed;
+      this.len += this.speed;
+      this.history.push({x: this.x, y: this.y});
+
+      if (this.len > this.maxLen || this.x < 0 || this.x > w || this.y < 0 || this.y > h) {
+        if (Math.random() < 0.4 && this.len < 400) {
+          // Turn
+          this.angle += Math.random() < 0.5 ? Math.PI / 2 : -Math.PI / 2;
+          this.maxLen += Math.random() * 100 + 50;
+        } else {
+          this.life -= 0.01;
+          if (this.life <= 0) this.init();
+        }
+      }
+      if (this.history.length > 30) this.history.shift();
+    }
+    draw() {
+      if (this.history.length < 2) return;
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(0, 200, 83, ${this.life * 0.4})`;
+      ctx.lineWidth = 1.5;
+      ctx.moveTo(this.history[0].x, this.history[0].y);
+      for(let i=1; i<this.history.length; i++) {
+        ctx.lineTo(this.history[i].x, this.history[i].y);
+      }
+      ctx.stroke();
+      
+      // Draw head node
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(0, 255, 65, ${this.life})`;
+      ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    traces = Array.from({length: 40}, () => new Trace());
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    if (!canvasStates[canvas.id] || document.hidden) return;
+
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Fade trail
+    ctx.fillRect(0, 0, w, h);
+    traces.forEach(t => {
+      t.update();
+      t.draw();
+    });
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  observer.observe(canvas);
+  animate();
+})();
+
+/* ── RED ALERT CHALLENGE LOGIC ─────────── */
+(function() {
+  const redBtn = document.getElementById('red-alert-btn');
+  const redScreen = document.getElementById('red-alert-screen');
+  const redTimer = document.getElementById('red-timer');
+  const redRecordEl = document.getElementById('red-record');
+  const redLog = document.getElementById('red-typing-log');
+  
+  let startTime;
+  let timerInterval;
+  let typingInterval;
+  let isRedActive = false;
+  let recordTime = localStorage.getItem('red-alert-record') || 0;
+
+  const JEFTER_DETAILS = [
+    "> Initializing Jefter Tokomere profile...",
+    "> Full Name: Jefter Isheanesu Tokomere",
+    "> Role: Software Engineer & IoT Developer",
+    "> Education: NUST Student (Zim)",
+    "> Expertise: Full Stack & Embedded Systems",
+    "> Passion: Automating the future with ESP32",
+    "> Location: Bulawayo, Zimbabwe",
+    "> Mission: Bridging hardware and software",
+    "> Fun Fact: Codes at 3:00 AM consistently",
+    "> Fun Fact: IoT is not just a job, it's a lifestyle",
+    "> Status: Currently surviving Red Alert...",
+    "> Keep focusing... don't click!",
+    "> Data streaming at 1Gbps...",
+    "> System core temperature nominal.",
+    "> High focus detected. Keep going!"
+  ];
+
+  function formatTime(ms) {
+    const minutes = Math.floor(ms / 60000);
+    const seconds = Math.floor((ms % 60000) / 1000);
+    const millis = Math.floor((ms % 1000) / 10);
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${millis.toString().padStart(2, '0')}`;
+  }
+
+  // Display initial record
+  if (recordTime > 0) {
+    redRecordEl.innerText = formatTime(parseInt(recordTime));
+  }
+
+  function startRedChallenge() {
+    isRedActive = true;
+    redScreen.classList.add('active');
+    redLog.innerHTML = '';
+    startTime = Date.now();
+    
+    // Timer
+    timerInterval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      redTimer.innerText = formatTime(elapsed);
+    }, 50);
+
+    // Typing Fun Details
+    let lineIdx = 0;
+    typingInterval = setInterval(() => {
+      if (lineIdx < JEFTER_DETAILS.length) {
+        const line = document.createElement('div');
+        line.className = 'red-log-line';
+        line.innerText = JEFTER_DETAILS[lineIdx];
+        redLog.appendChild(line);
+        redLog.scrollTop = redLog.scrollHeight;
+        lineIdx++;
+      } else {
+        lineIdx = 0; // Loop or stop
+      }
+    }, 1800);
+
+    // Short delay before enabling click-to-stop to avoid immediate trigger
+    setTimeout(() => {
+      redScreen.addEventListener('click', stopRedChallenge, { once: true });
+    }, 300);
+  }
+
+  function stopRedChallenge() {
+    isRedActive = false;
+    clearInterval(timerInterval);
+    clearInterval(typingInterval);
+    const finalElapsed = Date.now() - startTime;
+    const finalTimeFormatted = formatTime(finalElapsed);
+    
+    if (finalElapsed > recordTime) {
+      recordTime = finalElapsed;
+      localStorage.setItem('red-alert-record', recordTime);
+      redRecordEl.innerText = finalTimeFormatted;
+      alert(`NEW RECORD!\n\nYou survived for: ${finalTimeFormatted}\n\nExcellent focus!`);
+    } else {
+      alert(`CHALLENGE FAILED!\n\nYou survived for: ${finalTimeFormatted}\n\nDon't lose focus next time!`);
+    }
+    
+    redScreen.classList.remove('active');
+    redTimer.innerText = '00:00.00';
+    redLog.innerHTML = '';
+  }
+
+  redBtn && redBtn.addEventListener('click', startRedChallenge);
+})();
