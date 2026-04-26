@@ -910,7 +910,7 @@ body {
   position:relative;
   max-width: 550px;
   margin-left: auto;
-  height: 520px; /* Reduced to hide the bottom-most branding */
+  height: 490px; /* Further reduced to fully clip the badge */
   box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
   transition: all 0.4s ease;
   backdrop-filter: blur(12px);
@@ -934,7 +934,7 @@ body {
   background: linear-gradient(90deg, #00c853, #00ff41);
   color: #000;
   text-align: center;
-  padding: 18px 0; /* Taller to cover more area */
+  padding: 24px 0; /* Extra height to cover any remaining gap */
   font-size: 1rem;
   font-weight: 900;
   z-index: 100; /* Stays on top */
