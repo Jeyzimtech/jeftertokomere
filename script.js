@@ -164,22 +164,26 @@ const observer = new IntersectionObserver((entries) => {
 
   function drawEdges() {
     const nodes = state.nodes;
-    for (let i = 0; i < state.edges.length; i++) {
-      const e = state.edges[i];
-      const a = nodes[e.a];
-      const b = nodes[e.b];
-      const dx = a.x - b.x;
-      const dy = a.y - b.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const strength = clamp(1 - dist / 210, 0, 1);
-      if (strength <= 0) continue;
-
-      ctx.strokeStyle = `rgba(60, 255, 140, ${0.05 + strength * 0.16})`;
-      ctx.lineWidth = 0.7 + strength * 0.75;
-      ctx.beginPath();
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(b.x, b.y);
-      ctx.stroke();
+    const maxDist = isMobile ? 120 : 160;
+    const maxDistSq = maxDist * maxDist;
+    
+    ctx.lineWidth = 0.6;
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const d2 = dx * dx + dy * dy;
+        
+        if (d2 < maxDistSq) {
+          const dist = Math.sqrt(d2);
+          const opacity = (1 - dist / maxDist) * 0.15;
+          ctx.strokeStyle = `rgba(0, 255, 65, ${opacity})`;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
     }
   }
 

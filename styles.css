@@ -1176,6 +1176,21 @@ canvas {
   will-change: transform, opacity;
 }
 
+/* ── VISME BRANDING HACK ────────────────── */
+/* This attempts to hide the 'Powered by Visme' badge if it is outside the iframe */
+.visme_d ~ div,
+[class*="visme"] [class*="powered"],
+[class*="visme"] [class*="branding"],
+div[style*="z-index: 999999"], 
+#visme-branding {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  pointer-events: none !important;
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
