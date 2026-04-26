@@ -5,21 +5,21 @@
 
 :root {
   --bg-primary:    #000000;
-  --bg-secondary:  #030a03;
-  --bg-card:       #061006;
-  --bg-card-hover: #0a1a0a;
+  --bg-secondary:  #010501;
+  --bg-card:       rgba(6, 20, 6, 0.65);
+  --bg-card-hover: rgba(10, 30, 10, 0.8);
   --accent-blue:   #00c853;
   --accent-cyan:   #00ff41;
   --accent-purple: #39ff14;
   --text-primary:  #e0ffe0;
   --text-secondary:#7abf7a;
   --text-muted:    #3d6b3d;
-  --border:        rgba(0,200,83,0.18);
+  --border:        rgba(0, 255, 65, 0.4);
   --glow-blue:     0 0 20px rgba(0,200,83,0.4);
   --glow-cyan:     0 0 30px rgba(0,255,65,0.3);
   --gradient-hero: linear-gradient(135deg, #000000 0%, #030a03 50%, #010801 100%);
   --gradient-accent: linear-gradient(90deg, #00c853, #00ff41);
-  --gradient-card: linear-gradient(145deg, #061006, #030a03);
+  --gradient-card: linear-gradient(145deg, rgba(10, 30, 10, 0.7), rgba(3, 15, 3, 0.7));
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -513,10 +513,12 @@ body {
 #skills { background: var(--bg-primary); }
 .skills-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; }
 .skill-card {
-  background: var(--gradient-card);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 20px; padding:1.8rem;
   transition: all 0.3s;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .skill-card:hover {
   border-color: var(--accent-blue);
@@ -539,13 +541,13 @@ body {
 .skill-card-title { font-weight:700; font-size:1rem; color:var(--text-primary); }
 .skill-tags { display:flex; flex-wrap:wrap; gap:0.45rem; }
 .skill-pill {
-  background: rgba(0,200,83,0.08);
-  border: 1px solid rgba(0,200,83,0.2);
-  color: var(--text-secondary);
-  padding: 0.3rem 0.7rem;
-  border-radius:50px; font-size:0.78rem;
+  padding: 0.35rem 0.85rem;
+  border-radius:50px; font-size:0.8rem;
   font-family:'JetBrains Mono', monospace;
   transition:all 0.2s;
+  background: rgba(0, 255, 65, 0.12);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  font-weight: 600;
 }
 .skill-pill:hover {
   background: rgba(0,255,65,0.15);
@@ -557,12 +559,14 @@ body {
 #projects { background: var(--bg-secondary); }
 .projects-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:1.8rem; }
 .project-card {
-  background: var(--gradient-card);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 20px; padding:2rem;
   display:flex; flex-direction:column;
   transition: all 0.4s ease;
   position:relative; overflow:hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .project-card::before {
   content:''; position:absolute; top:0; left:0;
