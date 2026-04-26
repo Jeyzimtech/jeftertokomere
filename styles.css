@@ -910,9 +910,10 @@ body {
   position:relative;
   max-width: 550px;
   margin-left: auto;
-  height: 550px; 
+  height: 520px; /* Reduced to hide the bottom-most branding */
   box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
   transition: all 0.4s ease;
+  backdrop-filter: blur(12px);
 }
 .contact-form:hover {
   border-color: var(--accent-cyan);
@@ -928,17 +929,19 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  background: linear-gradient(90deg, #00c853, #00ff41);
   color: #000;
   text-align: center;
-  padding: 12px 0; /* Increased padding */
-  font-size: 0.9rem; /* Increased font-size */
-  font-weight: 800;
-  z-index: 10;
-  letter-spacing: 1px;
+  padding: 18px 0; /* Taller to cover more area */
+  font-size: 1rem;
+  font-weight: 900;
+  z-index: 100; /* Stays on top */
+  letter-spacing: 2px;
   text-transform: uppercase;
-  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(255,255,255,0.2);
 }
 .contact-form::before {
   content:''; position:absolute; top:0; left:0; right:0; height:2px;
