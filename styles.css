@@ -934,14 +934,17 @@ body {
   background: linear-gradient(90deg, #00c853, #00ff41);
   color: #000;
   text-align: center;
-  padding: 24px 0; /* Extra height to cover any remaining gap */
-  font-size: 1rem;
+  height: 90px; /* Very tall to cover a large area */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
   font-weight: 900;
-  z-index: 100; /* Stays on top */
+  z-index: 100;
   letter-spacing: 2px;
   text-transform: uppercase;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
-  border-top: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.6);
+  border-top: 2px solid rgba(255,255,255,0.3);
 }
 .contact-form::before {
   content:''; position:absolute; top:0; left:0; right:0; height:2px;
